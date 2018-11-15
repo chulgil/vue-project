@@ -22,9 +22,7 @@ export default {
     },
     toggleComplate: function(todoItem, index)  {
       todoItem.complated = !todoItem.complated;
-      // 로컬스토리지에 데이터 갱신 
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+      this.$emit('toggleItem', todoItem, index);
     }
   }
 }
