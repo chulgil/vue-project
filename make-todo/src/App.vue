@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
-    <TodoList></TodoList>
+    <TodoList v-bind:propsdata="todoItems"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
@@ -30,13 +30,29 @@ new Vue({
 
 //es6 기법
 export default{
+  data: function() {
+    return {
+      todoItems: []
+    }
+  },
+  created: function() {
+    if(localStorage.length > 0) {
+      for(var i = 0; i < localStorage.length ; i ++) {
+        if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
+          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        }
+      }
+    }
+    console.log('created');
+  },
   // 컴포넌트 태그명 : 컴포넌트 내용
   components : {
     'TodoHeader': TodoHeader,
     'TodoList' : TodoList,
     'TodoInput' : TodoInput,
     'TodoFooter' : TodoFooter
-    }
+  }
+
 }
 
 </script>
