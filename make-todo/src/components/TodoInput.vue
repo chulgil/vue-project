@@ -19,8 +19,12 @@ export default {
     addTodo: function() {
       console.log(this.newTodoItem)
       // 로컬 스토리지에 저장하는 로직
-      localStorage.setItem(this.newTodoItem, this.newTodoItem);
-      this.clearInput();
+      if(this.newTodoItem !== '') {
+        var obj = {complated: false, item: this.newTodoItem};
+        // localStorage.setItem(this.newTodoItem, obj);
+        localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+        this.clearInput();
+      }
     },
 
     clearInput: function() {
