@@ -13,24 +13,7 @@
  import TodoList from './components/TodoList.vue'
  import TodoFooter from './components/TodoFooter.vue'
 
-//es5 기법
-/*
-var my_cmp = {
-  template: '<div>my component</div>'
-};
-
-
-new Vue({
-  el:'',
-  components:{
-    'my-cmp': my_cmp // -하이픈 케밥 기법
-  }
-});
-*/
-
-//es6 기법
 export default{
-  // 컴포넌트 태그명 : 컴포넌트 내용
   components : {
     TodoHeader,
     TodoList,
