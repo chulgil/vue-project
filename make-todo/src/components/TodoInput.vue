@@ -1,8 +1,7 @@
 <template>
   <div class="inputBox shadow">
-    <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
-    <!-- <button v-on:click="addTodo">Add</button> -->
-    <span class="addContainer" v-on:click="addTodo">
+    <input type="text" v-model="newTodoItem" @keyup.enter="addTodo">
+    <span class="addContainer" @click="addTodo">
       <i class="fas fa-plus addBtn"></i>
     </span>
 
@@ -36,10 +35,9 @@ export default {
   },
   methods: {
     addTodo: function() {
-      console.log(this.newTodoItem)
       // 로컬 스토리지에 저장하는 로직
       if(this.newTodoItem !== '') {
-        this.$emit('addTodoItem', this.newTodoItem);
+        this.$store.commit('addOneItem', this.newTodoItem);
         this.clearInput();
       } else {
         this.showModal = !this.showModal;
